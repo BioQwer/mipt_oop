@@ -23,13 +23,13 @@ Time add(Time a, int min) {
     res.hour = a.hour;
     res.min = a.min + min;
 
-    if (res.min > 60) {
+    if (res.min >= 60) {
         int hoursAdd = (res.min / 60);
         res.hour = res.hour + hoursAdd;
         res.min = res.min % 60;
-    } else {
-        res.hour = a.hour;
-        res.min = a.min + min;
+    }
+    if (res.hour >= 24) {
+        res.hour = res.hour % 24;
     }
     return res;
 }
